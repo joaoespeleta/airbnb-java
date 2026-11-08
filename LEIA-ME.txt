@@ -1,19 +1,7 @@
-PROJETO PRÁTICO - PLATAFORMA DE LOCAÇÃO
-
-Como executar:
-1. Abra a pasta ProjetoLocacao em uma IDE Java (Eclipse, IntelliJ ou VS Code).
-2. Mantenha a pasta dados no diretório principal do projeto.
-3. Execute a classe app.AppPrincipal.
-
-O projeto utiliza somente Java padrão. Os arquivos de carga inicial ficam em dados/.
-As senhas são usadas apenas para autenticação e nunca aparecem nas listagens.
-
 Usuários de exemplo:
-Proprietário: marcos@exemplo.com / marcos123
-Proprietária: fernanda@exemplo.com / fer12345
-Cliente: ana@exemplo.com / ana12345
-Cliente: bruno@exemplo.com / bruno123
-Cliente: carla@exemplo.com / carla123
-Cliente: daniel@exemplo.com / daniel123
-
-Datas das reservas iniciais representam histórico e podem estar no passado.
+Proprietário: joaoespeleta@gmail.com / joao123
+Proprietário: joaovictor@gmail.com / joaovictor123
+Cliente: decarli@gmail.com / decarli123
+Cliente: guilherme@gmail.com / guilherme123
+Cliente: lucas@gmail.com/ lucas123
+Cliente: ana@gmail.com / ana12345

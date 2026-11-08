@@ -36,26 +36,38 @@ public class AppPrincipal {
             System.out.println("0 - Sair");
             opcao = lerInteiro("Escolha uma opção: ");
             switch (opcao) {
-                case 1: acessarProprietario(); break;
-                case 2: acessarCliente(); break;
-                case 3: listarPropriedades(); break;
-                case 4: listarUsuarios(); break;
-                case 0: System.out.println("Obrigado por utilizar a plataforma!"); break;
-                default: System.out.println("Opção inválida.");
+                case 1:
+                    acessarProprietario();
+                    break;
+                case 2:
+                    acessarCliente();
+                    break;
+                case 3:
+                    listarPropriedades();
+                    break;
+                case 4:
+                    listarUsuarios();
+                    break;
+                case 0:
+                    System.out.println("Obrigado por utilizar a plataforma!");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
             }
         } while (opcao != 0);
         scanner.close();
     }
 
     private static void carregarDados() {
-        GerenciarDadosIniciais.carregarUsuarios("dados/usuarios.txt", listaUsuarios);
-        GerenciarDadosIniciais.carregarPropriedades("dados/propriedades.txt", listaUsuarios, listaPropriedades);
-        GerenciarDadosIniciais.carregarReservas("dados/reservas.txt", listaUsuarios, listaPropriedades);
+        GerenciarDadosIniciais.carregarUsuarios("../../dados/usuarios.txt", listaUsuarios);
+        GerenciarDadosIniciais.carregarPropriedades("../../dados/propriedades.txt", listaUsuarios, listaPropriedades);
+        GerenciarDadosIniciais.carregarReservas("../../dados/reservas.txt", listaUsuarios, listaPropriedades);
     }
 
     private static void acessarProprietario() {
         Proprietario proprietario = loginProprietario();
-        if (proprietario == null) return;
+        if (proprietario == null)
+            return;
         int opcao;
         do {
             System.out.println("\n--- ÁREA DO PROPRIETÁRIO: " + proprietario.getNome() + " ---");
@@ -65,18 +77,27 @@ public class AppPrincipal {
             System.out.println("0 - Voltar");
             opcao = lerInteiro("Escolha: ");
             switch (opcao) {
-                case 1: cadastrarPropriedade(proprietario); break;
-                case 2: proprietario.listarPropriedades(); break;
-                case 3: proprietario.listarPropriedadesAlugadas(); break;
-                case 0: break;
-                default: System.out.println("Opção inválida.");
+                case 1:
+                    cadastrarPropriedade(proprietario);
+                    break;
+                case 2:
+                    proprietario.listarPropriedades();
+                    break;
+                case 3:
+                    proprietario.listarPropriedadesAlugadas();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
             }
         } while (opcao != 0);
     }
 
     private static void acessarCliente() {
         Cliente cliente = loginCliente();
-        if (cliente == null) return;
+        if (cliente == null)
+            return;
         int opcao;
         do {
             System.out.println("\n--- ÁREA DO CLIENTE: " + cliente.getNome() + " ---");
@@ -86,11 +107,19 @@ public class AppPrincipal {
             System.out.println("0 - Voltar");
             opcao = lerInteiro("Escolha: ");
             switch (opcao) {
-                case 1: consultarDisponibilidade(cliente); break;
-                case 2: fazerReserva(cliente); break;
-                case 3: cliente.listarReservas(); break;
-                case 0: break;
-                default: System.out.println("Opção inválida.");
+                case 1:
+                    consultarDisponibilidade(cliente);
+                    break;
+                case 2:
+                    fazerReserva(cliente);
+                    break;
+                case 3:
+                    cliente.listarReservas();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
             }
         } while (opcao != 0);
     }
@@ -102,12 +131,15 @@ public class AppPrincipal {
             Usuario novo = cadastrarUsuario(true);
             return novo == null ? null : (Proprietario) novo;
         }
-        if (opcao != 1) return null;
+        if (opcao != 1)
+            return null;
         String email = lerTexto("E-mail: ");
         String senha = lerTexto("Senha: ");
         for (Usuario u : listaUsuarios) {
-            if (u instanceof Proprietario && u.autenticar(email, senha)) return (Proprietario) u;
-        }
+            if (u instanceof Proprietario && u.autenticar(email, senha))
+                return (Proprietario) u;
+        } // utilizado instanceof para verificar se o usuário é do tipo Proprietario e
+          // autenticar com email e senha
         System.out.println("E-mail ou senha incorretos, ou usuário não é proprietário.");
         return null;
     }
@@ -119,12 +151,15 @@ public class AppPrincipal {
             Usuario novo = cadastrarUsuario(false);
             return novo == null ? null : (Cliente) novo;
         }
-        if (opcao != 1) return null;
+        if (opcao != 1)
+            return null;
         String email = lerTexto("E-mail: ");
         String senha = lerTexto("Senha: ");
         for (Usuario u : listaUsuarios) {
-            if (u instanceof Cliente && u.autenticar(email, senha)) return (Cliente) u;
-        }
+            if (u instanceof Cliente && u.autenticar(email, senha))
+                return (Cliente) u;
+        } // utilizado instanceof para verificar se o usuário é do tipo Cliente e
+          // autenticar com email e senha
         System.out.println("E-mail ou senha incorretos, ou usuário não é cliente.");
         return null;
     }
@@ -134,12 +169,15 @@ public class AppPrincipal {
             String nome = lerTexto("Nome: ");
             String email = lerTexto("E-mail: ");
             for (Usuario u : listaUsuarios) {
-                if (u.getEmail().equalsIgnoreCase(email)) throw new IllegalArgumentException("Este e-mail já está cadastrado.");
+                if (u.getEmail().equalsIgnoreCase(email))
+                    throw new IllegalArgumentException("Este e-mail já está cadastrado.");
             }
             String senha = lerTexto("Senha (mínimo 6 caracteres): ");
             Usuario novo;
-            if (proprietario) novo = new Proprietario(nome, email, senha);
-            else novo = new Cliente(nome, email, senha);
+            if (proprietario)
+                novo = new Proprietario(nome, email, senha);
+            else
+                novo = new Cliente(nome, email, senha);
             listaUsuarios.add(novo);
             System.out.println("Cadastro realizado com sucesso!");
             return novo;
@@ -184,8 +222,10 @@ public class AppPrincipal {
             String local = lerTexto("Localização (deixe vazio para todas): ");
             LocalDate entrada = lerData("Check-in (AAAA-MM-DD): ");
             LocalDate saida = lerData("Check-out (AAAA-MM-DD): ");
-            if (entrada.isBefore(LocalDate.now())) throw new IllegalArgumentException("O check-in não pode ser anterior à data atual.");
-            if (!saida.isAfter(entrada)) throw new IllegalArgumentException("O check-out deve ser posterior ao check-in.");
+            if (entrada.isBefore(LocalDate.now()))
+                throw new IllegalArgumentException("O check-in não pode ser anterior à data atual.");
+            if (!saida.isAfter(entrada))
+                throw new IllegalArgumentException("O check-out deve ser posterior ao check-in.");
             cliente.listarPropriedadesDisponiveis(listaPropriedades, local, entrada, saida);
         } catch (RuntimeException e) {
             System.out.println("Não foi possível consultar: " + e.getMessage());
@@ -196,10 +236,12 @@ public class AppPrincipal {
         try {
             int codigo = lerInteiro("Código da propriedade: ");
             Propriedade propriedade = buscarPropriedade(codigo);
-            if (propriedade == null) throw new IllegalArgumentException("Código de propriedade não encontrado.");
+            if (propriedade == null)
+                throw new IllegalArgumentException("Código de propriedade não encontrado.");
             LocalDate entrada = lerData("Check-in (AAAA-MM-DD): ");
             LocalDate saida = lerData("Check-out (AAAA-MM-DD): ");
-            if (entrada.isBefore(LocalDate.now())) throw new IllegalArgumentException("O check-in não pode ser anterior à data atual.");
+            if (entrada.isBefore(LocalDate.now()))//comparacao de datas para n ter data anterior a atual
+                throw new IllegalArgumentException("O check-in não pode ser anterior à data atual.");
             int hospedes = lerInteiro("Quantidade de hóspedes: ");
             Reserva reserva = cliente.realizarReserva(propriedade, entrada, saida, hospedes);
             System.out.println("Reserva realizada com sucesso!");
@@ -210,52 +252,74 @@ public class AppPrincipal {
     }
 
     private static Propriedade buscarPropriedade(int codigo) {
-        for (Propriedade p : listaPropriedades) if (p.getCodigo() == codigo) return p;
+        for (Propriedade p : listaPropriedades)
+            if (p.getCodigo() == codigo)
+                return p;
         return null;
     }
 
     private static void listarPropriedades() {
-        if (listaPropriedades.isEmpty()) System.out.println("Nenhuma propriedade cadastrada.");
+        if (listaPropriedades.isEmpty())
+            System.out.println("Nenhuma propriedade cadastrada.");
         Collections.sort(listaPropriedades);
-        for (Propriedade p : listaPropriedades) p.imprimirDados();
+        for (Propriedade p : listaPropriedades)
+            p.imprimirDados();
     }
 
     private static void listarUsuarios() {
-        if (listaUsuarios.isEmpty()) System.out.println("Nenhum usuário cadastrado.");
-        for (Usuario u : listaUsuarios) u.imprimirDados();
+        if (listaUsuarios.isEmpty())
+            System.out.println("Nenhum usuário cadastrado.");
+        for (Usuario u : listaUsuarios)
+            u.imprimirDados();
     }
 
+    // A leitura dos dados é padronizada em texto (string), inteiro (int), double e
+    // data (LocalDate). Para cada tipo, há um método específico que trata a entrada
+    // do usuário e valida os dados.
     private static String lerTexto(String mensagem) {
         System.out.print(mensagem);
         return scanner.nextLine().trim();
     }
 
+    // exemplo de sobrecarga com o método lerInteiro, que possuem nomes iguais porém
+    // com parâmetros diferentes
     private static int lerInteiro(String mensagem) {
         while (true) {
-            try { return Integer.parseInt(lerTexto(mensagem)); }
-            catch (NumberFormatException e) { System.out.println("Digite um número inteiro válido."); }
+            try {
+                return Integer.parseInt(lerTexto(mensagem));
+            } catch (NumberFormatException e) {
+                System.out.println("Digite um número inteiro válido.");
+            }
         }
     }
 
+    // os valores devem estar entre min e max
     private static int lerInteiro(String mensagem, int min, int max) {
         while (true) {
             int valor = lerInteiro(mensagem);
-            if (valor >= min && valor <= max) return valor;
+            if (valor >= min && valor <= max)
+                return valor;
             System.out.println("Digite um valor entre " + min + " e " + max + ".");
         }
     }
 
     private static double lerDouble(String mensagem) {
         while (true) {
-            try { return Double.parseDouble(lerTexto(mensagem).replace(',', '.')); }
-            catch (NumberFormatException e) { System.out.println("Digite um número válido."); }
+            try {
+                return Double.parseDouble(lerTexto(mensagem).replace(',', '.'));
+            } catch (NumberFormatException e) {
+                System.out.println("Digite um número válido.");
+            }
         }
     }
 
     private static LocalDate lerData(String mensagem) {
         while (true) {
-            try { return LocalDate.parse(lerTexto(mensagem)); }
-            catch (DateTimeParseException e) { System.out.println("Data inválida. Utilize AAAA-MM-DD."); }
+            try {
+                return LocalDate.parse(lerTexto(mensagem));
+            } catch (DateTimeParseException e) {
+                System.out.println("Data inválida. Utilize AAAA-MM-DD.");
+            }
         }
     }
 }

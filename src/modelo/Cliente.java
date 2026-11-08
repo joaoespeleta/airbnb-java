@@ -13,7 +13,9 @@ public class Cliente extends Usuario {
         reservasRealizadas = new ArrayList<>();
     }
 
-    public ArrayList<Reserva> getReservasRealizadas() { return reservasRealizadas; }
+    public ArrayList<Reserva> getReservasRealizadas() {
+        return reservasRealizadas;
+    }
 
     public Reserva realizarReserva(Propriedade p, LocalDate checkIn, LocalDate checkOut)
             throws ReservaInvalidaException {
@@ -29,8 +31,10 @@ public class Cliente extends Usuario {
     }
 
     public void listarReservas() {
-        if (reservasRealizadas.isEmpty()) System.out.println("Você ainda não possui reservas.");
-        for (Reserva r : reservasRealizadas) r.imprimirDados();
+        if (reservasRealizadas.isEmpty())
+            System.out.println("Você ainda não possui reservas.");
+        for (Reserva r : reservasRealizadas)
+            r.imprimirDados();
     }
 
     public void listarPropriedadesDisponiveis(ArrayList<Propriedade> propriedades,
@@ -39,11 +43,14 @@ public class Cliente extends Usuario {
         for (Propriedade p : propriedades) {
             boolean mesmaLocalizacao = localizacao == null || localizacao.trim().isEmpty()
                     || p.getLocalizacao().toLowerCase().contains(localizacao.toLowerCase());
-            if (mesmaLocalizacao && p.verificarDisponibilidade(entrada, saida)) disponiveis.add(p);
+            if (mesmaLocalizacao && p.verificarDisponibilidade(entrada, saida))
+                disponiveis.add(p);
         }
         Collections.sort(disponiveis);
-        if (disponiveis.isEmpty()) System.out.println("Nenhuma propriedade disponível para esse período.");
-        for (Propriedade p : disponiveis) p.imprimirDados();
+        if (disponiveis.isEmpty())
+            System.out.println("Nenhuma propriedade disponível para esse período.");
+        for (Propriedade p : disponiveis)
+            p.imprimirDados();
     }
 
     @Override

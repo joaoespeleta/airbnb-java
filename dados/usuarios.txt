@@ -2,6 +2,6 @@
 P;Joao Espeleta;joaoespeleta@gmail.com;joao123
 P;Joao Vicotr;joaovictor@gmail.com;joaovictor123
 C;Isabela Decarli;decarli@gmail.com;decarli123
-C;Guilherme Rios;guilherm@gmail.com;guilherme123
+C;Guilherme Rios;guilherme@gmail.com;guilherme123
 C;Lucas Andrade;lucas@gmail.com;lucas123
-C;Daniel Alves;daniel@exemplo.com;daniel123
+C;Ana Julia;ana@gmail.com;ana12345

@@ -1,7 +1,7 @@
 # Código;Tipo;Título;Descrição;Localização;Capacidade;PreçoNoite;EmailProprietário;Dado1;Dado2
-1;CASA;Casa com jardim;Casa confortável e espaçosa;Barueri;6;400;marcos@exemplo.com;true;30
-2;CASA;Casa de campo;Casa ampla para famílias;Atibaia;8;350;fernanda@exemplo.com;false;25
-3;APARTAMENTO;Apartamento central;Apartamento próximo ao comércio;São Paulo;4;220;marcos@exemplo.com;5;80
-4;APARTAMENTO;Apartamento moderno;Apartamento com varanda;Osasco;3;190;fernanda@exemplo.com;3;60
-5;SITIO;Sítio das Palmeiras;Sítio com área verde;Ibiúna;10;600;marcos@exemplo.com;2500
-6;SITIO;Sítio Recanto;Espaço para descanso;Mairinque;12;520;fernanda@exemplo.com;3200
+1;CASA;Casa com jardim;Casa confortável e espaçosa;Orlando;6;400;joaoespeleta@gmail.com;true;30
+2;CASA;Casa de campo;Casa ampla para famílias;Olimpia;8;350;joaovictor@gmail.com;false;25
+3;APARTAMENTO;Apartamento central;Apartamento próximo ao comércio;São Paulo;4;220;joaoespeleta@gmail.com;5;80
+4;APARTAMENTO;Apartamento moderno;Apartamento com varanda;Sorocaba;3;190;joaovictor@gmail.com;3;60
+5;SITIO;Sítio da Esperança;Sítio com área verde;Bonito;10;600;joaoespeleta@gmail.com;2500
+6;SITIO;Sítio do Sol;Espaço para descanso;Americana;12;520;joaovictor@gmail.com;3200

@@ -10,15 +10,19 @@ public class Proprietario extends Usuario {
         propriedades = new ArrayList<>();
     }
 
-    public ArrayList<Propriedade> getPropriedades() { return propriedades; }
+    public ArrayList<Propriedade> getPropriedades() {
+        return propriedades;
+    }
 
     public void cadastrarPropriedade(Propriedade propriedade) {
         propriedades.add(propriedade);
     }
 
     public void listarPropriedades() {
-        if (propriedades.isEmpty()) System.out.println("Você ainda não possui propriedades.");
-        for (Propriedade p : propriedades) p.imprimirDados();
+        if (propriedades.isEmpty())
+            System.out.println("Você ainda não possui propriedades.");
+        for (Propriedade p : propriedades)
+            p.imprimirDados();
     }
 
     public void listarPropriedadesAlugadas() {
@@ -27,10 +31,12 @@ public class Proprietario extends Usuario {
             if (p.estaAlugada()) {
                 encontrou = true;
                 System.out.println("\n" + p.getTitulo() + " (código " + p.getCodigo() + ")");
-                for (Reserva r : p.getReservas()) r.imprimirDados();
+                for (Reserva r : p.getReservas())
+                    r.imprimirDados();
             }
         }
-        if (!encontrou) System.out.println("Nenhuma propriedade possui reservas.");
+        if (!encontrou)
+            System.out.println("Nenhuma propriedade possui reservas.");
     }
 
     @Override

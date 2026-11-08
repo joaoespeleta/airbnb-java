@@ -14,7 +14,8 @@ public class GerenciarDadosIniciais {
         try (Scanner arquivo = new Scanner(new File(caminho))) {
             while (arquivo.hasNextLine()) {
                 String linha = arquivo.nextLine();
-                if (linha.trim().isEmpty() || linha.startsWith("#")) continue;
+                if (linha.trim().isEmpty() || linha.startsWith("#"))
+                    continue;
                 String[] dados = linha.split(";", -1);
                 try {
                     Usuario usuario;
@@ -38,11 +39,13 @@ public class GerenciarDadosIniciais {
         try (Scanner arquivo = new Scanner(new File(caminho))) {
             while (arquivo.hasNextLine()) {
                 String linha = arquivo.nextLine();
-                if (linha.trim().isEmpty() || linha.startsWith("#")) continue;
+                if (linha.trim().isEmpty() || linha.startsWith("#"))
+                    continue;
                 String[] d = linha.split(";", -1);
                 try {
                     Proprietario dono = buscarProprietario(usuarios, d[7]);
-                    if (dono == null) throw new IllegalArgumentException("Proprietário não encontrado.");
+                    if (dono == null)
+                        throw new IllegalArgumentException("Proprietário não encontrado.");
                     int codigo = Integer.parseInt(d[0]);
                     String tipo = d[1];
                     Propriedade p;
@@ -72,12 +75,14 @@ public class GerenciarDadosIniciais {
         try (Scanner arquivo = new Scanner(new File(caminho))) {
             while (arquivo.hasNextLine()) {
                 String linha = arquivo.nextLine();
-                if (linha.trim().isEmpty() || linha.startsWith("#")) continue;
+                if (linha.trim().isEmpty() || linha.startsWith("#"))
+                    continue;
                 String[] d = linha.split(";", -1);
                 try {
                     Propriedade p = buscarPropriedade(propriedades, Integer.parseInt(d[0]));
                     Cliente c = buscarCliente(usuarios, d[1]);
-                    if (p == null || c == null) throw new IllegalArgumentException("Cliente ou propriedade não encontrado.");
+                    if (p == null || c == null)
+                        throw new IllegalArgumentException("Cliente ou propriedade não encontrado.");
                     c.realizarReserva(p, LocalDate.parse(d[2]), LocalDate.parse(d[3]), Integer.parseInt(d[4]));
                 } catch (Exception e) {
                     System.out.println("Reserva ignorada no arquivo: " + e.getMessage());
@@ -89,17 +94,26 @@ public class GerenciarDadosIniciais {
     }
 
     private static Proprietario buscarProprietario(ArrayList<Usuario> usuarios, String email) {
-        for (Usuario u : usuarios) if (u instanceof Proprietario && u.getEmail().equalsIgnoreCase(email)) return (Proprietario) u;
+        for (Usuario u : usuarios)
+            if (u instanceof Proprietario && u.getEmail().equalsIgnoreCase(email))
+                return (Proprietario) u;
         return null;
     }
 
     private static Cliente buscarCliente(ArrayList<Usuario> usuarios, String email) {
-        for (Usuario u : usuarios) if (u instanceof Cliente && u.getEmail().equalsIgnoreCase(email)) return (Cliente) u;
+        for (Usuario u : usuarios)
+            if (u instanceof Cliente && u.getEmail().equalsIgnoreCase(email))
+                return (Cliente) u;
         return null;
     }
 
+    // é necessário utilizar instanceof pois o ArrayList<Usuario> usuarios; é tanto
+    // Proprietario quanto Cliente, então é necessário verificar se o usuário é do
+    // tipo correto antes.
     private static Propriedade buscarPropriedade(ArrayList<Propriedade> propriedades, int codigo) {
-        for (Propriedade p : propriedades) if (p.getCodigo() == codigo) return p;
+        for (Propriedade p : propriedades)
+            if (p.getCodigo() == codigo)
+                return p;
         return null;
     }
 }

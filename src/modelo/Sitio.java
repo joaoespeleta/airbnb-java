@@ -15,14 +15,20 @@ public class Sitio extends Propriedade {
         setAreaTotal(areaTotal);
     }
 
-    public double getAreaTotal() { return areaTotal; }
+    public double getAreaTotal() {
+        return areaTotal;
+    }
+
     public void setAreaTotal(double area) {
-        if (area <= 0) throw new IllegalArgumentException("A área total deve ser maior que zero.");
+        if (area <= 0)
+            throw new IllegalArgumentException("A área total deve ser maior que zero.");
         areaTotal = area;
     }
 
     @Override
-    public double calcularPrecoTotal(int noites) { return getPrecoPorNoite() * noites; }
+    public double calcularPrecoTotal(int noites) {
+        return getPrecoPorNoite() * noites;
+    } // preço por noite × noites
 
     @Override
     public void imprimirDados() {
@@ -33,5 +39,7 @@ public class Sitio extends Propriedade {
     }
 
     @Override
-    public String toString() { return "Sítio - " + super.toString(); }
+    public String toString() {
+        return "Sítio - " + super.toString();
+    }
 }

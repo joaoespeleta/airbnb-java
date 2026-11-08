@@ -18,19 +18,30 @@ public class Apartamento extends Propriedade {
         setTaxa(taxa);
     }
 
-    public int getAndar() { return andar; }
-    public double getTaxa() { return taxa; }
+    public int getAndar() {
+        return andar;
+    }
+
+    public double getTaxa() {
+        return taxa;
+    }
+
     public void setAndar(int andar) {
-        if (andar < 0) throw new IllegalArgumentException("O andar não pode ser negativo.");
+        if (andar < 0)
+            throw new IllegalArgumentException("O andar não pode ser negativo.");
         this.andar = andar;
     }
+
     public void setTaxa(double taxa) {
-        if (taxa < 0) throw new IllegalArgumentException("A taxa não pode ser negativa.");
+        if (taxa < 0)
+            throw new IllegalArgumentException("A taxa não pode ser negativa.");
         this.taxa = taxa;
     }
 
     @Override
-    public double calcularPrecoTotal(int noites) { return taxa + getPrecoPorNoite() * noites; }
+    public double calcularPrecoTotal(int noites) {
+        return taxa + getPrecoPorNoite() * noites;
+    } // taxa + preço por noite × noites
 
     @Override
     public void imprimirDados() {
@@ -41,5 +52,7 @@ public class Apartamento extends Propriedade {
     }
 
     @Override
-    public String toString() { return "Apartamento - " + super.toString(); }
+    public String toString() {
+        return "Apartamento - " + super.toString();
+    }
 }

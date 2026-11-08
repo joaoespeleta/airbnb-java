@@ -21,8 +21,10 @@ public class Reserva {
 
     public Reserva(int codigo, Propriedade propriedade, Cliente cliente, LocalDate checkIn,
             LocalDate checkOut, int hospedes) throws ReservaInvalidaException {
-        if (codigo <= 0) throw new ReservaInvalidaException("Código de reserva inválido.");
-        if (propriedade == null || cliente == null) throw new ReservaInvalidaException("Cliente e propriedade são obrigatórios.");
+        if (codigo <= 0)
+            throw new ReservaInvalidaException("Código de reserva inválido.");
+        if (propriedade == null || cliente == null)
+            throw new ReservaInvalidaException("Cliente e propriedade são obrigatórios.");
         if (checkIn == null || checkOut == null || !checkOut.isAfter(checkIn))
             throw new ReservaInvalidaException("O check-out deve ser posterior ao check-in.");
         if (hospedes < 1 || hospedes > propriedade.getCapacidade())
@@ -30,7 +32,8 @@ public class Reserva {
         if (!propriedade.verificarDisponibilidade(checkIn, checkOut))
             throw new ReservaInvalidaException("A propriedade já possui reserva nesse período.");
         this.codigo = codigo;
-        if (codigo >= proximoCodigo) proximoCodigo = codigo + 1;
+        if (codigo >= proximoCodigo)
+            proximoCodigo = codigo + 1;
         this.propriedade = propriedade;
         this.cliente = cliente;
         this.checkIn = checkIn;
@@ -39,15 +42,37 @@ public class Reserva {
         calcularCustoTotal();
     }
 
-    public int getCodigo() { return codigo; }
-    public Propriedade getPropriedade() { return propriedade; }
-    public Cliente getCliente() { return cliente; }
-    public LocalDate getCheckIn() { return checkIn; }
-    public LocalDate getCheckOut() { return checkOut; }
-    public int getQuantidadeHospedes() { return quantidadeHospedes; }
-    public double getCustoTotal() { return custoTotal; }
+    public int getCodigo() {
+        return codigo;
+    }
 
-    public long calcularNumeroNoites() { return ChronoUnit.DAYS.between(checkIn, checkOut); }
+    public Propriedade getPropriedade() {
+        return propriedade;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public int getQuantidadeHospedes() {
+        return quantidadeHospedes;
+    }
+
+    public double getCustoTotal() {
+        return custoTotal;
+    }
+
+    public long calcularNumeroNoites() {
+        return ChronoUnit.DAYS.between(checkIn, checkOut);
+    }
 
     public void calcularCustoTotal() {
         custoTotal = propriedade.calcularPrecoTotal((int) calcularNumeroNoites(), quantidadeHospedes);

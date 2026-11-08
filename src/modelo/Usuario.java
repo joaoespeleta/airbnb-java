@@ -12,16 +12,25 @@ public abstract class Usuario implements Autenticavel {
         setSenha(senha);
     }
 
-    public String getNome() { return nome; }
-    public String getEmail() { return email; }
-    public String getSenha() { return senha; }
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
 
     public void setNome(String nome) {
         if (nome == null || nome.trim().length() < 3) {
             throw new IllegalArgumentException("O nome deve ter pelo menos 3 caracteres.");
         }
         this.nome = nome.trim();
-    }
+    }// nome com pelo menos 3 caracteres; e-mail contendo "@" e "." e não repetido na
+     // plataforma; senha com pelo menos 6 caracteres.
 
     public void setEmail(String email) {
         if (email == null || !email.contains("@") || !email.contains(".")) {
