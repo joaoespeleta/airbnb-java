@@ -1,0 +1,4 @@
+# CodigoPropriedade;EmailCliente;CheckIn;CheckOut;Hospedes
+1;ana@exemplo.com;2026-10-01;2026-10-04;4
+3;ana@exemplo.com;2026-10-10;2026-10-12;2
+5;bruno@exemplo.com;2026-10-15;2026-10-17;5
